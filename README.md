@@ -57,4 +57,3 @@ local TextBox = Tab:Box("TextBoxText",function(text)
   print(text)
 end)
 ```
-end
