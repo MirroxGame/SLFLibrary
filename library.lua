@@ -29,7 +29,7 @@ local function bccolor(Object,R,G,B,Delay)
 	local ToTween = Object
 	local tweenInfo = TweenInfo.new(Delay,Enum.EasingStyle.Quart,Enum.EasingDirection.InOut,0,false,0)
 	local Tweener = TweenService:Create(ToTween,tweenInfo,{BackgroundColor3 = Color3.fromRGB(R,G,B)})
-		Tweener:Play()
+	Tweener:Play()
 end
 
 
@@ -38,14 +38,6 @@ for i,v in next,game.CoreGui:GetChildren() do
 		v:Destroy()
 	end
 end
-
-
-
-
-
-
-
-
 
 
 
@@ -204,16 +196,6 @@ function Library:Window(text,keycode)
 	end)
 
 
-
-
-
-
-
-
-
-
-
-
 	local dragging
 	local dragInput
 	local dragStart
@@ -249,6 +231,8 @@ function Library:Window(text,keycode)
 			update(input)
 		end
 	end)
+	
+	
 	function inside:Folder(textt)
 
 		local tab = Instance.new("ScrollingFrame")
@@ -321,7 +305,11 @@ function Library:Window(text,keycode)
 		tb.MouseButton1Click:Connect(function()
 			UIPageLayout:JumpToIndex(tabnum)
 		end)
+		
+		
 		local InsideTab = {}
+		
+		
 		function InsideTab:Button(text,callback)
 
 			local button = Instance.new("TextButton")
@@ -391,6 +379,7 @@ function Library:Window(text,keycode)
 					effect()
 				end
 			end)
+			
 			button.MouseButton1Up:Connect(function()
 				pressed = false
 				time = 0.3
@@ -403,13 +392,15 @@ function Library:Window(text,keycode)
 
 			button.MouseLeave:Connect(function()
 				fade(button,0,0.3)
-                                pressed = false
-                                time = 0.3
+                pressed = false
+                time = 0.3
 			end)
 
 			button.MouseButton1Click:Connect(callback)
 
 		end
+		
+		
 		function InsideTab:Toggle(text,callback,state)
 			local checkbox = Instance.new("TextLabel")
 			local TextButton = Instance.new("TextButton")
@@ -522,13 +513,13 @@ function Library:Window(text,keycode)
 
 			local enabled = false
       
-      if state then
-					enabled = true
-					callback(enabled)
-					enable:TweenSize(UDim2.new(0,20,0,20),"Out","Quad",0.1)
-					disable:TweenSize(UDim2.new(0,0,0,0),"Out","Quad",0.1)
-					color(circle,85, 170, 127,0.1)
-      end
+            if state then
+				enabled = true
+				callback(enabled)
+				enable:TweenSize(UDim2.new(0,20,0,20),"Out","Quad",0.1)
+				disable:TweenSize(UDim2.new(0,0,0,0),"Out","Quad",0.1)
+				color(circle,85, 170, 127,0.1)
+            end
       
 			TextButton.MouseButton1Click:Connect(function()
 				if not enabled then
@@ -537,19 +528,14 @@ function Library:Window(text,keycode)
 					enable:TweenSize(UDim2.new(0,20,0,20),"Out","Quad",0.1)
 					disable:TweenSize(UDim2.new(0,0,0,0),"Out","Quad",0.1)
 					color(circle,85, 170, 127,0.1)
-				else if enabled then
-						enabled = false
-						disable:TweenSize(UDim2.new(0,20,0,20),"Out","Quad",0.1)
-						enable:TweenSize(UDim2.new(0,0,0,0),"Out","Quad",0.1)
-						color(circle,255, 60, 63,0.1)
-						callback(enabled)
-					end
+				elseif enabled then
+					enabled = false
+					disable:TweenSize(UDim2.new(0,20,0,20),"Out","Quad",0.1)
+					enable:TweenSize(UDim2.new(0,0,0,0),"Out","Quad",0.1)
+					color(circle,255, 60, 63,0.1)
+					callback(enabled)
 				end
 			end)
-
-
-
-
 
 
 			local riv = Instance.new("Frame",TextButton)
@@ -558,6 +544,7 @@ function Library:Window(text,keycode)
 			bllf.CornerRadius = UDim.new(0,100)
 			local pressed = false
 			local time = 3
+			
 			local function effect()
 				local ef = riv:Clone()
 				local fe = bllf:Clone()
@@ -579,20 +566,19 @@ function Library:Window(text,keycode)
 				ef:TweenPosition(UDim2.new(0.5,0,0.5,0),"InOut","Quad",time,true,nil)
 				ef:TweenSize(UDim2.new(1,0,0,475),"InOut","Quad",time,true,nil)
 				fade(ef,1,0.5)
-				wait(0.7) do
-					ef:Destroy() ; fe:Destroy()
+				wait(0.7)
+				ef:Destroy() ; fe:Destroy()
 				end
-			end
 
 
 			TextButton.MouseButton1Down:Connect(function()
 				if not pressed then
-
 					pressed = true
 					time = 3
 					effect()
 				end
 			end)
+			
 			TextButton.MouseButton1Up:Connect(function()
 				pressed = false
 				time = 0.3
@@ -604,11 +590,9 @@ function Library:Window(text,keycode)
 
 
 			TextButton.MouseLeave:Connect(function()
-				fade(checkbox,0,0.3)
-        if pressed then
-          pressed = false
-          time = 0.3
-        end
+			fade(checkbox,0,0.3)
+            pressed = false
+            time = 0.3
 			end)
 
 
@@ -678,7 +662,7 @@ function Library:Window(text,keycode)
 			TextLabel.Text = (suffix .. "  ".. min)
 			TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 			TextLabel.TextSize = 13.000
-      TextLabel.TextXAlignment = Enum.TextXAlignment.Right
+            TextLabel.TextXAlignment = Enum.TextXAlignment.Right
 
 			label.Name = "label"
 			label.Parent = Range
@@ -746,6 +730,8 @@ function Library:Window(text,keycode)
 				end)
 			end)
 		end
+		
+		
 		function InsideTab:Box(placeholder,callback)
 
 			local TextBox = Instance.new("TextBox")
@@ -803,15 +789,15 @@ function Library:Window(text,keycode)
 			end)
 
             TextBox.Changed:Connect(function()
-if TextBox.focused then
-if TextBox.Text == "" then
-    bccolor(stroke,90,90,90,0.3)
-    textfade(TextLabel,1,0.3)
-else
-    bccolor(stroke,85, 170, 127,0.3)
-    textfade(TextLabel,0,0.3)
-end
-end
+                if TextBox.focused then
+                    if TextBox.Text == "" then
+                        bccolor(stroke,90,90,90,0.3)
+                        textfade(TextLabel,1,0.3)
+                    else
+                        bccolor(stroke,85, 170, 127,0.3)
+                        textfade(TextLabel,0,0.3)
+                    end
+                end
             end)
 
 			TextBox.FocusLost:Connect(function()
@@ -826,5 +812,3 @@ end
 	return inside;
 end
 return Library
-
-end
