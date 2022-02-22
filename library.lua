@@ -181,12 +181,14 @@ function Library:Window(text,keycode)
         if not isTyping and key.KeyCode == Enum.KeyCode[keycode] then
             if toggle then
                 toggle = false
-                main.BorderSizePixel = 0 
+                main.BorderSizePixel = 0
+                print(main)
                 main:TweenSize(UDim2.new(0,591,0,0),"Out","Quad",0.15)
                 wait(0.15)
                 drug.Visible = false
             elseif not toggle then
                 toggle = true
+                print(main)
                 main:TweenSize(UDim2.new(0,591,0,298),"Out","Quad",0.15)
                 main.BorderSizePixel = 1 
                 drug.Visible = true
