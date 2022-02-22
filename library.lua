@@ -398,7 +398,7 @@ function Library:Window(text,keycode)
             time = 0.3
             end)
             
-            button.MouseButton1Click:Connect(function(state) spawn(function() callback(state) end) end)
+            button.MouseButton1Click:Connect(callback)
             
         end
             
@@ -520,7 +520,7 @@ function Library:Window(text,keycode)
                 enable:TweenSize(UDim2.new(0,20,0,20),"Out","Quad",0.1)
                 disable:TweenSize(UDim2.new(0,0,0,0),"Out","Quad",0.1)
                 color(circle,85, 170, 127,0.1)
-                spawn(function() callback(enabled) end)
+                callback(enabled)
             end
             
             TextButton.MouseButton1Click:Connect(function()
@@ -529,13 +529,13 @@ function Library:Window(text,keycode)
                     enable:TweenSize(UDim2.new(0,20,0,20),"Out","Quad",0.1)
                     disable:TweenSize(UDim2.new(0,0,0,0),"Out","Quad",0.1)
                     color(circle,85, 170, 127,0.1)
-                    spawn(function() callback(enabled) end)
+                    callback(enabled)
                 elseif enabled then
                     enabled = false
                     disable:TweenSize(UDim2.new(0,20,0,20),"Out","Quad",0.1)
                     enable:TweenSize(UDim2.new(0,0,0,0),"Out","Quad",0.1)
                     color(circle,255, 60, 63,0.1)
-                    spawn(function() callback(enabled) end)
+                    callback(enabled)
                 end
             end)
             
