@@ -182,13 +182,11 @@ function Library:Window(text,keycode)
             if toggle then
                 toggle = false
                 main.BorderSizePixel = 0
-                print(main)
                 main:TweenSize(UDim2.new(0,591,0,0),"Out","Quad",0.15)
                 wait(0.15)
                 drug.Visible = false
             elseif not toggle then
                 toggle = true
-                print(main)
                 main:TweenSize(UDim2.new(0,591,0,298),"Out","Quad",0.15)
                 main.BorderSizePixel = 1 
                 drug.Visible = true
@@ -398,7 +396,7 @@ function Library:Window(text,keycode)
             time = 0.3
             end)
             
-            button.MouseButton1Click:Connect(callback)
+            button.MouseButton1Click:Connect(function(state) spawn(function() callback(state) end) end)
             
         end
             
@@ -520,7 +518,7 @@ function Library:Window(text,keycode)
                 enable:TweenSize(UDim2.new(0,20,0,20),"Out","Quad",0.1)
                 disable:TweenSize(UDim2.new(0,0,0,0),"Out","Quad",0.1)
                 color(circle,85, 170, 127,0.1)
-                callback(enabled)
+                spawn(function() callback(enabled) end)
             end
             
             TextButton.MouseButton1Click:Connect(function()
@@ -529,13 +527,13 @@ function Library:Window(text,keycode)
                     enable:TweenSize(UDim2.new(0,20,0,20),"Out","Quad",0.1)
                     disable:TweenSize(UDim2.new(0,0,0,0),"Out","Quad",0.1)
                     color(circle,85, 170, 127,0.1)
-                    callback(enabled)
+                    spawn(function() callback(enabled) end)
                 elseif enabled then
                     enabled = false
                     disable:TweenSize(UDim2.new(0,20,0,20),"Out","Quad",0.1)
                     enable:TweenSize(UDim2.new(0,0,0,0),"Out","Quad",0.1)
                     color(circle,255, 60, 63,0.1)
-                    callback(enabled)
+                    spawn(function() callback(enabled) end)
                 end
             end)
             
@@ -812,8 +810,8 @@ function Library:Window(text,keycode)
             end)
             
         end
-        return InsideTab;
+        return InsideTab
     end
-    return inside;
+    return inside
 end
 return Library
