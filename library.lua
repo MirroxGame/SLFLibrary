@@ -598,7 +598,7 @@ function Library:Window(text,keycode)
             
         end
         
-        function InsideTab:Slider(text,min,max,suffix,callback)
+        function InsideTab:Slider(text,min,max,suffix,callback,preval)
         
             local Range = Instance.new("Frame")
             local SliderButton = Instance.new("TextButton")
@@ -699,6 +699,9 @@ function Library:Window(text,keycode)
             
             callback = callback or function() end
             
+            if preval then
+                SliderInner:TweenSize(UDim2.new(0, math.clamp(preval - SliderInner.AbsolutePosition.X, 0, SliderButton.AbsoluteSize.X), 0, SliderButton.AbsoluteSize.Y),"In","Quad",0.05,true,nil)
+            end
             SliderButton.MouseButton1Down:Connect(function()
                 Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / SliderButton.AbsoluteSize.X) *SliderInner.AbsoluteSize.X) + tonumber(minvalue)) or 0
                 TextLabel.Text = (suffix .. "  ".. Value)
