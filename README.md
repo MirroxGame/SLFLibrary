@@ -47,7 +47,7 @@ ____
 ```lua
 local Slider = Tab:Slider("SliderText",0,100,"SliderSuffix",function(value)  -- 0 (MinValue) | 100 (MaxValue)
   print(value)
-end,10) -- 10 is amount by default. This means slider will be with value 10 when u execute the gui.
+end)
 ```
 
 ### Adding TextBox
