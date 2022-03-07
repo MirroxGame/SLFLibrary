@@ -819,7 +819,7 @@ function Library:Window(text,keycode)
             end)
             
         end
-        		function InsideTab:AddDropdown(text,tab,y,callback)
+        		function InsideTab:Dropdown(text,tab,y,callback)
 
 			local insidedrp = {}
 			local dropdown = Instance.new("Frame")
