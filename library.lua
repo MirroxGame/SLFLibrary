@@ -819,7 +819,7 @@ function Library:Window(text,keycode)
             end)
             
         end
-        		function InsideTab:Dropdown(text,tab,y,callback)
+        		function InsideTab:Dropdown(text,tabl,y,callback)
 
 			local insidedrp = {}
 			local dropdown = Instance.new("Frame")
@@ -925,7 +925,7 @@ function Library:Window(text,keycode)
 			Frame.BackgroundTransparency = 1.000
 			Frame.BorderSizePixel = 0
 			Frame.Size = UDim2.new(0,2,0,34)
-			for _,Text in pairs(tab) do
+			for _,Text in pairs(tabl) do
 
 				local checkbox = Instance.new("TextLabel")
 				local TextButton = Instance.new("TextButton")
