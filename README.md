@@ -55,7 +55,7 @@ ____
 ```lua
 local Dropdown = Tab:Dropdown("DropdownText",{"TableWithValues","Value2","Value3"},150,function(Choosen) -- 150 (Y Size of the dropdown)
   for _,v in pairs(Choosen) do
-    print(v) -- will print values that was enabled
+    print(v) -- will print toggles that was enabled
   end
 end)
 ```
