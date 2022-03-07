@@ -870,6 +870,7 @@ function Library:Window(text,keycode)
 
 			local toggle = false
 			button.MouseButton1Click:Connect(function()
+				drpfrm.ScrollingEnabled = not toggle
 				if not toggle then
 					toggle = true
 					drpfrm:TweenSize(UDim2.new(0,570,0,y),"Out","Quad",0.2,true,nil)
@@ -908,7 +909,7 @@ function Library:Window(text,keycode)
 			drpfrm.Size = UDim2.new(0, 570, 0, 34)
 			drpfrm.ScrollBarThickness = 3
 			drpfrm.CanvasSize = UDim2.new(0,0,0,30)
-
+			drpfrm.ScrollingEnabled = false
 
 			UICorner2.Parent = drpfrm
 
