@@ -51,7 +51,7 @@ end)
 ```
 
 ### Adding Dropdown
-
+____
 ```lua
 local Dropdown = Tab:Dropdown("DropdownText",{"TableWithValues"},150,function(Choosen) -- 150 (Y Size of the dropdown)
   print(Choosen) -- TableWithValues
