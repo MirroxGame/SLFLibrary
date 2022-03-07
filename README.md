@@ -50,11 +50,13 @@ local Slider = Tab:Slider("SliderText",0,100,"SliderSuffix",function(value)  -- 
 end)
 ```
 
-### Adding Dropdown
+### Adding Multi Dropdown
 ____
 ```lua
-local Dropdown = Tab:Dropdown("DropdownText",{"TableWithValues"},150,function(Choosen) -- 150 (Y Size of the dropdown)
-  print(Choosen) -- TableWithValues
+local Dropdown = Tab:Dropdown("DropdownText",{"TableWithValues","Value2","Value3"},150,function(Choosen) -- 150 (Y Size of the dropdown)
+  for _,v in pairs(Choosen) do
+    print(v) -- will print values that was enabled
+  end
 end)
 ```
 
