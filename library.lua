@@ -32,6 +32,12 @@ local function bccolor(Object,R,G,B,Delay)
     Tweener:Play()
 end
 
+local function rotate(Object,Deg,Delay)
+	local ToTween = Object
+	local tweenInfo = TweenInfo.new(Delay,Enum.EasingStyle.Quart,Enum.EasingDirection.InOut,0,false,0)
+	local Tweener = TweenService:Create(ToTween,tweenInfo,{Rotation = Deg})
+	Tweener:Play()
+end
 
 for i,v in next,game.CoreGui:GetChildren() do
     if v.Name == "uilib" then
@@ -813,6 +819,261 @@ function Library:Window(text,keycode)
             end)
             
         end
+        		function InsideTab:AddDropdown(text,tab,y,callback)
+
+			local insidedrp = {}
+			local dropdown = Instance.new("Frame")
+			local UICorner = Instance.new("UICorner")
+			local UICorner2 = Instance.new("UICorner")
+			local UICorner3 = Instance.new("UICorner")
+			local button = Instance.new("TextButton")
+			local Arrow = Instance.new("ImageLabel")
+			local drpfrm = Instance.new("ScrollingFrame")
+			local dsda = Instance.new("UIStroke")
+			local drpp = Instance.new("UIListLayout")
+
+
+			dropdown.Name = "dropdown"
+			dropdown.Parent = tab
+			dropdown.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+			dropdown.BackgroundTransparency = 1
+			dropdown.BorderSizePixel = 0
+			dropdown.Position = UDim2.new(0.111564629, 0, 0.166666642, 0)
+			dropdown.Size = UDim2.new(0, 570, 0, 34)
+			dropdown.ZIndex = 2
+
+
+			dsda.Parent = dropdown
+			dsda.ApplyStrokeMode = "Border"
+			dsda.Color = Color3.fromRGB(61, 122, 90)	
+			dsda.LineJoinMode = "Round"
+			dsda.Thickness = 2
+			dsda.Transparency = 0
+
+			UICorner3.Parent = dropdown
+
+			UICorner.Parent = button
+			UICorner.CornerRadius = UDim.new(0,8)
+
+			button.Name = "button"
+			button.Parent = dropdown
+			button.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+			button.BackgroundTransparency = 0
+			button.BorderSizePixel = 0
+			button.Size = UDim2.new(0, 570, 0, 34)
+			button.ZIndex = 2
+			button.Font = Enum.Font.Gotham
+			button.Text = text
+			button.TextColor3 = Color3.fromRGB(255, 255, 255)
+			button.TextSize = 16.000
+			button.AutoButtonColor = false
+
+			local toggle = false
+			button.MouseButton1Click:Connect(function()
+				if not toggle then
+					toggle = true
+					drpfrm:TweenSize(UDim2.new(0,570,0,y),"Out","Quad",0.2,true,nil)
+					dropdown:TweenSize(UDim2.new(0,570,0,y),"Out","Quad",0.2,true,nil)
+					rotate(Arrow,180,0.2)
+				else
+					toggle = false
+					drpfrm:TweenSize(UDim2.new(0,570,0,32),"Out","Quad",0.2,true,nil)	
+					dropdown:TweenSize(UDim2.new(0,570,0,34),"Out","Quad",0.2,true,nil)	
+					rotate(Arrow,0,0.2)
+				end
+
+			end)
+
+
+
+
+
+
+			Arrow.Name = "Arrow"
+			Arrow.Parent = button
+			Arrow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Arrow.BackgroundTransparency = 1.000
+			Arrow.BorderSizePixel = 0
+			Arrow.Position = UDim2.new(0.94035089, 0, 0, 0)
+			Arrow.Size = UDim2.new(0, 34, 0, 34)
+			Arrow.ZIndex = 2
+			Arrow.Image = "rbxassetid://3926305904"
+			Arrow.ImageRectOffset = Vector2.new(44, 404)
+			Arrow.ImageRectSize = Vector2.new(36, 36)
+
+			drpfrm.Name = "drpfrm"
+			drpfrm.Parent = dropdown
+			drpfrm.BackgroundColor3 = Color3.fromRGB(38, 38, 38)
+			drpfrm.BorderSizePixel = 0
+			drpfrm.Size = UDim2.new(0, 570, 0, 34)
+			drpfrm.ScrollBarThickness = 3
+			drpfrm.CanvasSize = UDim2.new(0,0,0,30)
+
+
+			UICorner2.Parent = drpfrm
+
+			drpp.Name = "ddd"
+			drpp.Parent = drpfrm
+			drpp.VerticalAlignment = Enum.VerticalAlignment.Top
+			drpp.SortOrder = Enum.SortOrder.LayoutOrder
+			drpp.Padding = UDim.new(0, 4)
+
+			local Frame = Instance.new("Frame")
+
+			Frame.Parent = drpfrm
+			Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Frame.BackgroundTransparency = 1.000
+			Frame.BorderSizePixel = 0
+			Frame.Size = UDim2.new(0,2,0,34)
+			for _,Text in pairs(tab) do
+
+				local checkbox = Instance.new("TextLabel")
+				local TextButton = Instance.new("TextButton")
+				local circle = Instance.new("ImageLabel")
+				local enable = Instance.new("ImageLabel")
+				local disable = Instance.new("ImageLabel")
+				local Sample = Instance.new("ImageLabel")
+				local UICorner = Instance.new("UICorner")
+				local Frame = Instance.new("Frame")
+				local UICorner = Instance.new("UICorner")
+
+				drpfrm.CanvasSize = drpfrm.CanvasSize + UDim2.new(0,0,0,38)
+				--Properties:
+
+				checkbox.Name = "checkbox"
+				checkbox.Parent = drpfrm
+				checkbox.BackgroundColor3 = Color3.fromRGB(36,36,36)
+				checkbox.BackgroundTransparency = 1
+				checkbox.BorderSizePixel = 0
+				checkbox.ClipsDescendants = true
+				checkbox.Position = UDim2.new(0, 0, 0, 0)
+				checkbox.Size = UDim2.new(0, 574, 0, 34)
+				checkbox.ZIndex = 2
+				checkbox.Font = Enum.Font.Gotham
+				checkbox.Text = "   " .. Text
+				checkbox.TextColor3 = Color3.fromRGB(255,255,255)
+				checkbox.TextSize = 16.000
+				checkbox.TextWrapped = true
+				checkbox.TextXAlignment = Enum.TextXAlignment.Left
+
+				TextButton.Parent = checkbox
+				TextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				TextButton.BackgroundTransparency = 1.000
+				TextButton.BorderSizePixel = 0
+				TextButton.Size = UDim2.new(0, 570, 0, 34)
+				TextButton.ZIndex = 2
+				TextButton.Font = Enum.Font.SourceSans
+				TextButton.Text = ""
+				TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+				TextButton.TextSize = 14.000
+
+				circle.Name = "circle"
+				circle.Parent = TextButton
+				circle.AnchorPoint = Vector2.new(0, 0.5)
+				circle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				circle.BackgroundTransparency = 1.000
+				circle.BorderSizePixel = 0
+				circle.Position = UDim2.new(0.939999998, 0, 0.5, 0)
+				circle.Size = UDim2.new(0, 30, 0, 30)
+				circle.ZIndex = 2
+				circle.Image = "rbxassetid://3926305904"
+				circle.ImageColor3 = Color3.fromRGB(255, 60, 63)
+				circle.ImageRectOffset = Vector2.new(324, 964)
+				circle.ImageRectSize = Vector2.new(36, 36)
+				circle.ImageTransparency = 0
+
+
+				local Framee = Instance.new("Frame")
+				local UICornerrr = Instance.new("UICorner")
+
+				Framee.Parent = circle
+				Framee.AnchorPoint = Vector2.new(0.5, 0.5)
+				Framee.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+				Framee.Position = UDim2.new(0.5, 0, 0.5, 0)
+				Framee.Size = UDim2.new(0, 24, 0, 24)
+				Framee.ZIndex = 2
+				Framee.BorderSizePixel = 0
+
+				UICornerrr.CornerRadius = UDim.new(0, 1000)
+				UICornerrr.Parent = Framee
+
+				enable.Name = "enable"
+				enable.Parent = circle
+				enable.AnchorPoint = Vector2.new(0.5, 0.5)
+				enable.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				enable.BackgroundTransparency = 1.000
+				enable.BorderSizePixel = 0
+				enable.Position = UDim2.new(0.5, 0, 0.5, 0)
+				enable.ZIndex = 3
+				enable.Image = "rbxassetid://3926305904"
+				enable.ImageColor3 = Color3.fromRGB(85, 170, 127)
+				enable.ImageRectOffset = Vector2.new(312, 4)
+				enable.ImageRectSize = Vector2.new(24, 24)
+
+				disable.Name = "disable"
+				disable.Parent = circle
+				disable.AnchorPoint = Vector2.new(0.5, 0.5)
+				disable.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				disable.BackgroundTransparency = 1.000
+				disable.BorderSizePixel = 0
+				disable.Position = UDim2.new(0.5, 0, 0.5, 0)
+				disable.Size = UDim2.new(0, 20, 0, 20)
+				disable.ZIndex = 3
+				disable.Image = "rbxassetid://3926305904"
+				disable.ImageColor3 = Color3.fromRGB(255, 60, 63)
+				disable.ImageRectOffset = Vector2.new(284, 4)
+				disable.ImageRectSize = Vector2.new(24, 24)
+
+				Sample.Name = "Sample"
+				Sample.Parent = checkbox
+				Sample.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				Sample.BackgroundTransparency = 1.000
+				Sample.ZIndex = 12
+				Sample.Image = "http://www.roblox.com/asset/?id=4560909609"
+				Sample.ImageColor3 = Color3.fromRGB(115, 115, 115)
+				Sample.ImageTransparency = 0.600
+
+				UICorner.Parent = checkbox
+
+				-- Scripts:
+
+
+
+
+				local enabled = false
+				TextButton.MouseButton1Click:Connect(function()
+					if not enabled then
+						enabled = true
+						callback(Text)
+						enable:TweenSize(UDim2.new(0,20,0,20),"Out","Quad",0.1)
+						disable:TweenSize(UDim2.new(0,0,0,0),"Out","Quad",0.1)
+						color(circle,85, 170, 127,0.1)
+					else if enabled then
+							enabled = false
+							disable:TweenSize(UDim2.new(0,20,0,20),"Out","Quad",0.1)
+							enable:TweenSize(UDim2.new(0,0,0,0),"Out","Quad",0.1)
+							color(circle,255, 60, 63,0.1)
+							callback(Text)
+						end
+					end
+				end)
+
+
+
+
+
+				TextButton.MouseEnter:Connect(function()
+					fade(checkbox,0,0.3)
+				end)
+
+
+				TextButton.MouseLeave:Connect(function()
+					fade(checkbox,1,0.3)
+				end)
+			end
+			return insidedrp;
+
+		end
         return InsideTab
     end
     return inside
