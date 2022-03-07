@@ -925,6 +925,7 @@ function Library:Window(text,keycode)
 			Frame.BackgroundTransparency = 1.000
 			Frame.BorderSizePixel = 0
 			Frame.Size = UDim2.new(0,2,0,34)
+			local sex = {}
 			for _,Text in pairs(penis) do
 
 				local checkbox = Instance.new("TextLabel")
@@ -1044,7 +1045,8 @@ function Library:Window(text,keycode)
 				TextButton.MouseButton1Click:Connect(function()
 					if not enabled then
 						enabled = true
-						callback(Text)
+						table.insert(sex,Text)
+						callback(sex)
 						enable:TweenSize(UDim2.new(0,20,0,20),"Out","Quad",0.1)
 						disable:TweenSize(UDim2.new(0,0,0,0),"Out","Quad",0.1)
 						color(circle,85, 170, 127,0.1)
@@ -1053,7 +1055,13 @@ function Library:Window(text,keycode)
 							disable:TweenSize(UDim2.new(0,20,0,20),"Out","Quad",0.1)
 							enable:TweenSize(UDim2.new(0,0,0,0),"Out","Quad",0.1)
 							color(circle,255, 60, 63,0.1)
-							callback(Text)
+							for i,v in pairs(sex) do
+							    if v == Text then
+								table.remove(sex,i)
+								break
+							    end
+							end
+							callback(sex)
 						end
 					end
 				end)
